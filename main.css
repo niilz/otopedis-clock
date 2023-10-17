@@ -1,3 +1,60 @@
 body {
   font-family: monospace;
 }
+
+.clock-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vw;
+  width: 80vw;
+  background-color: lightblue;
+  border-radius: 50%;
+  box-shadow: 0vw 0vw 0vw 5vw orange;
+  transform: rotate(-90deg);
+}
+
+.clock-center-hour {
+  position: relative;
+  height: 5vw;
+  width: 5vw;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.hour-arm {
+  position: absolute;
+  width: 30vw;
+  height: 3vw;
+  background-color: black;
+}
+
+.clock-center-min {
+  position: relative;
+  height: 4vw;
+  width: 4vw;
+  background-color: blue;
+  border-radius: 50%;
+}
+
+.min-arm {
+  position: absolute;
+  width: 35vw;
+  height: 2vw;
+  background-color: blue;
+}
+
+.clock-center-sec {
+  position: relative;
+  height: 2vw;
+  width: 2vw;
+  background-color: brown;
+  border-radius: 50%;
+}
+
+.sec-arm {
+  position: absolute;
+  width: 40vw;
+  height: 1vw;
+  background-color: brown;
+}

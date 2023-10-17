@@ -1,7 +1,12 @@
 const clockEl = document.getElementById("clock");
-const hourEl = document.getElementById("hour");
-const minEl = document.getElementById("min");
-const secEl = document.getElementById("sec");
+const clockFrame = document.getElementById("frame");
+const clockBase = document.getElementById("base");
+const hourEl = document.getElementById("center-hour");
+const hourArm = document.getElementById("hour");
+const minEl = document.getElementById("center-min");
+const minArm = document.getElementById("min");
+const secEl = document.getElementById("center-sec");
+const secArm = document.getElementById("sec");
 
 let lastUpdate = 0;
 
@@ -13,16 +18,29 @@ function clock() {
       const min = now.getMinutes();
       const sec = now.getSeconds();
 
-      hourEl.textContent = hour;
-      minEl.textContent = min;
-      secEl.textContent = sec;
+      const hourDeg = calcRad(hour, 12);
+      console.log(hourDeg);
+      hourEl.style.transform = `rotate(${hourDeg})`;
+
+      const minDeg = calcRad(min, 60);
+      console.log(minDeg);
+      minEl.style.transform = `rotate(${minDeg})`;
+
+      const secDeg = calcRad(sec, 60);
+      console.log(secDeg);
+      secEl.style.transform = `rotate(${secDeg})`;
 
       lastUpdate = timeStamp;
     }
-    requestAnimationFrame(updateClock);
+    //requestAnimationFrame(updateClock);
   };
 
   requestAnimationFrame(updateClock);
 }
 
 clock();
+
+function calcRad(timeVal, maxTimeVal) {
+  const deg = timeVal * (360 / maxTimeVal);
+  return deg.toString() + "deg";
+}

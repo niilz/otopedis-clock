@@ -1,3 +1,9 @@
+:root {
+  --orange: #ff6b15;
+  --blue: #04ace3;
+  --black: #000;
+}
+
 body {
   height: 100vh;
   font-family: monospace;
@@ -16,9 +22,9 @@ main {
   justify-content: center;
   height: 80vw;
   width: 80vw;
-  background-color: lightblue;
+  background-color: var(--blue);
   border-radius: 50%;
-  box-shadow: 0vw 0vw 0vw 5vw orange;
+  box-shadow: 0vw 0vw 0vw 5vw var(--orange);
   margin: 5vw;
 }
 
@@ -34,14 +40,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
   rotate: -90deg;
 }
 
 .clock-center-hour {
   height: 5vw;
   width: 5vw;
-  background-color: black;
+  background-color: var(--black);
 }
 
 .arm-base {
@@ -52,29 +57,29 @@ main {
 .hour-arm {
   width: 30vw;
   height: 3vw;
-  background-color: black;
+  background-color: var(--black);
 }
 
 .clock-center-min {
   height: 4vw;
   width: 4vw;
-  background-color: blue;
+  background-color: var(--orange);
 }
 
 .min-arm {
   width: 35vw;
   height: 2vw;
-  background-color: blue;
+  background-color: var(--orange);
 }
 
 .clock-center-sec {
   height: 2vw;
   width: 2vw;
-  background-color: brown;
+  background-color: var(--black);
 }
 
 .sec-arm {
   width: 36vw;
   height: 1vw;
-  background-color: brown;
+  background-color: var(--black);
 }

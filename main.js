@@ -14,25 +14,25 @@ function clock() {
   const updateClock = (timeStamp) => {
     if (timeStamp - lastUpdate > 1000) {
       const now = new Date();
-      const hour = now.getHours();
+      const hour = now.getHours() % 12;
       const min = now.getMinutes();
       const sec = now.getSeconds();
 
       const hourDeg = calcRad(hour, 12);
-      console.log(hourDeg);
-      hourEl.style.transform = `rotate(${hourDeg})`;
+      console.log({ hour, hourDeg });
+      hourEl.style.rotate = hourDeg;
 
       const minDeg = calcRad(min, 60);
-      console.log(minDeg);
-      minEl.style.transform = `rotate(${minDeg})`;
+      console.log({ min, minDeg });
+      minEl.style.rotate = minDeg;
 
       const secDeg = calcRad(sec, 60);
-      console.log(secDeg);
-      secEl.style.transform = `rotate(${secDeg})`;
+      console.log({ sec, secDeg });
+      secEl.style.rotate = secDeg;
 
       lastUpdate = timeStamp;
     }
-    //requestAnimationFrame(updateClock);
+    requestAnimationFrame(updateClock);
   };
 
   requestAnimationFrame(updateClock);

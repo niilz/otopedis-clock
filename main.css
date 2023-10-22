@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 100vh;
+  height: 100vmin;
   font-family: monospace;
   display: flex;
   flex-direction: column;
@@ -13,19 +13,19 @@ body {
 }
 
 main {
-  height: 80vh;
+  height: auto;
 }
 
 .clock-base {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vw;
-  width: 80vw;
+  height: 70vmin;
+  width: 70vmin;
   background-color: var(--blue);
   border-radius: 50%;
-  box-shadow: 0vw 0vw 0vw 5vw var(--orange);
-  margin: 5vw;
+  box-shadow: 0vmin 0vmin 0vmin 5vmin var(--orange);
+  margin: 5vmin;
 }
 
 .center-base {
@@ -44,42 +44,42 @@ main {
 }
 
 .clock-center-hour {
-  height: 5vw;
-  width: 5vw;
+  height: 5vmin;
+  width: 5vmin;
   background-color: var(--black);
 }
 
 .arm-base {
   position: absolute;
-  margin: 0 4vw 0 0;
+  margin: 0 4vmin 0 0;
 }
 
 .hour-arm {
-  width: 30vw;
-  height: 3vw;
+  width: 30vmin;
+  height: 3vmin;
   background-color: var(--black);
 }
 
 .clock-center-min {
-  height: 4vw;
-  width: 4vw;
+  height: 4vmin;
+  width: 4vmin;
   background-color: var(--orange);
 }
 
 .min-arm {
-  width: 35vw;
-  height: 2vw;
+  width: 35vmin;
+  height: 2vmin;
   background-color: var(--orange);
 }
 
 .clock-center-sec {
-  height: 2vw;
-  width: 2vw;
+  height: 2vmin;
+  width: 2vmin;
   background-color: var(--black);
 }
 
 .sec-arm {
-  width: 36vw;
-  height: 1vw;
+  width: 36vmin;
+  height: 1vmin;
   background-color: var(--black);
 }

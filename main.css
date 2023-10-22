@@ -16,6 +16,14 @@ main {
   height: auto;
 }
 
+button {
+  padding: 2vmin;
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+}
+
 .clock-base {
   display: flex;
   align-items: center;
@@ -26,6 +34,7 @@ main {
   border-radius: 50%;
   box-shadow: 0vmin 0vmin 0vmin 5vmin var(--orange);
   margin: 5vmin;
+  margin-bottom: 7vmin;
 }
 
 .center-base {

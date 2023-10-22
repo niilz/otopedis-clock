@@ -8,6 +8,10 @@ const minArm = document.getElementById("min");
 const secEl = document.getElementById("center-sec");
 const secArm = document.getElementById("sec");
 
+const tick = new Audio("tick.m4a");
+const tock = new Audio("tock.m4a");
+const currentSec = 0;
+
 let lastUpdate = 0;
 
 function clock() {
@@ -31,6 +35,13 @@ function clock() {
       secEl.style.rotate = secDeg;
 
       lastUpdate = timeStamp;
+      if (sec % 2 === 0) {
+        tick.play();
+        console.log("tick");
+      } else {
+        tock.play();
+        console.log("tock");
+      }
     }
     requestAnimationFrame(updateClock);
   };

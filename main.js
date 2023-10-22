@@ -1,3 +1,4 @@
+// clock
 const clockEl = document.getElementById("clock");
 const clockFrame = document.getElementById("frame");
 const clockBase = document.getElementById("base");
@@ -8,12 +9,26 @@ const minArm = document.getElementById("min");
 const secEl = document.getElementById("center-sec");
 const secArm = document.getElementById("sec");
 
+// buttons
+let soundOn = false;
+const soundButton = document.getElementById("sound");
+soundButton.textContent = "sound ON";
+soundButton.addEventListener("click", () => {
+  console.log("clicked");
+  soundOn = !soundOn;
+  if (soundOn) {
+    soundButton.textContent = "sound OFF";
+  } else {
+    soundButton.textContent = "sound ON";
+  }
+});
+
+// audio
 const tick = new Audio("tick.m4a");
 const tock = new Audio("tock.m4a");
 const currentSec = 0;
 
 let lastUpdate = 0;
-
 function clock() {
   const updateClock = (timeStamp) => {
     if (timeStamp - lastUpdate > 1000) {
@@ -23,24 +38,26 @@ function clock() {
       const sec = now.getSeconds();
 
       const hourDeg = calcRad(hour, 12);
-      console.log({ hour, hourDeg });
+      //console.log({ hour, hourDeg });
       hourEl.style.rotate = hourDeg;
 
       const minDeg = calcRad(min, 60);
-      console.log({ min, minDeg });
+      //console.log({ min, minDeg });
       minEl.style.rotate = minDeg;
 
       const secDeg = calcRad(sec, 60);
-      console.log({ sec, secDeg });
+      //console.log({ sec, secDeg });
       secEl.style.rotate = secDeg;
 
       lastUpdate = timeStamp;
-      if (sec % 2 === 0) {
-        tick.play();
-        console.log("tick");
-      } else {
-        tock.play();
-        console.log("tock");
+      if (soundOn) {
+        if (sec % 2 === 0) {
+          tick.play();
+          //console.log("tick");
+        } else {
+          tock.play();
+          //console.log("tock");
+        }
       }
     }
     requestAnimationFrame(updateClock);

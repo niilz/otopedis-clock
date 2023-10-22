@@ -40,7 +40,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  rotate: -90deg;
+  rotate: 90deg;
 }
 
 .clock-center-hour {

@@ -28,15 +28,16 @@ const tock = new Audio("tock.m4a");
 const currentSec = 0;
 
 let lastUpdate = 0;
+let lastSecond;
 function clock() {
   const updateClock = (timeStamp) => {
-    let updateRate = Math.random() * (1200 - 800) + 800;
+    let updateRate = Math.random() * (1500 - 200) + 200;
     if (timeStamp - lastUpdate > updateRate) {
       // current time
       const now = new Date();
       const hour = now.getHours() % 12;
       const min = now.getMinutes();
-      const sec = now.getSeconds();
+      let sec = now.getSeconds();
       // increment too early
       if (updateRate > 1000) {
         sec += 1;
@@ -46,7 +47,6 @@ function clock() {
       const hourDeg = calcRad(hour, 12);
       const minDeg = calcRad(min, 60);
       const secDeg = calcRad(sec, 60);
-      lastUpdate = timeStamp;
 
       const isRandomlySkipped = randomNumber(6) === 5;
       if (!isRandomlySkipped) {
@@ -57,15 +57,21 @@ function clock() {
         secEl.style.rotate = secDeg;
         //console.log({ sec, secDeg });
 
-        // tick-tock sound
-        if (soundOn) {
+        // tick-tock sound if sound turned on and we have actually advanced compared to the last one
+        if (lastSecond != sec) {
+          const elapsed = (cur, last) =>
+            `${cur}: ${Math.floor(
+              timeStamp - lastUpdate
+            )}ms elapsed since last ${last}`;
           if (sec % 2 === 0) {
-            tick.play();
-            //console.log("tick");
+            if (soundOn) tick.play();
+            console.log(elapsed("tick", "tock"));
           } else {
-            tock.play();
-            //console.log("tock");
+            if (soundOn) tock.play();
+            console.log(elapsed("tock", "tick"));
           }
+          lastSecond = sec;
+          lastUpdate = timeStamp;
         }
       } else {
         console.log("skipped a seconnd beat");

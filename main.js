@@ -29,17 +29,33 @@ const currentSec = 0;
 
 let lastUpdate = 0;
 let lastSecond;
+let lastUpdateRate;
+let wasLastUpdateRateUsed = true;
+const updateRateValues = [1300, 1000, 700];
 function clock() {
   const updateClock = (timeStamp) => {
-    let updateRate = Math.random() * (1500 - 200) + 200;
+    let updateRate;
+    if (wasLastUpdateRateUsed) {
+      const updateRateIdx = Math.floor(Math.random() * 3);
+      updateRate = updateRateValues[updateRateIdx];
+      //console.log({ updateRateIdx, updateRate });
+      lastUpdateRate = updateRate;
+      wasLastUpdateRateUsed = false;
+    } else {
+      updateRate = lastUpdateRate;
+    }
+
     if (timeStamp - lastUpdate > updateRate) {
+      lastUpdateRate = updateRate;
+      wasLastUpdateRateUsed = true;
       // current time
       const now = new Date();
       const hour = now.getHours() % 12;
       const min = now.getMinutes();
       let sec = now.getSeconds();
       // increment too early
-      if (updateRate > 1000) {
+      if (updateRate < 1000) {
+        //console.log("Incremented preemptively");
         sec += 1;
       }
 
@@ -71,11 +87,11 @@ function clock() {
             console.log(elapsed("tock", "tick"));
           }
           lastSecond = sec;
-          lastUpdate = timeStamp;
         }
       } else {
         console.log("skipped a seconnd beat");
       }
+      lastUpdate = timeStamp;
     }
     requestAnimationFrame(updateClock);
   };

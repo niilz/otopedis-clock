@@ -9,6 +9,21 @@ const minArm = document.getElementById("min");
 const secEl = document.getElementById("center-sec");
 const secArm = document.getElementById("sec");
 
+// canvas
+const canvas = document.getElementById("canvas");
+canvas.width = vmin(80);
+canvas.height = vmin(80);
+const ctx = canvas.getContext("2d");
+// draw second marks
+ctx.fillStyle = "black";
+const centerX = canvas.clientWidth / 2;
+const centerY = canvas.clientHeight / 2;
+const secMarkerWidth = vmin(1);
+const secMarkerHeight = 30;
+ctx.fillRect(centerX - secMarkerWidth / 2, 0, secMarkerWidth, secMarkerHeight);
+
+console.log({ canvas });
+
 // buttons
 let soundOn = false;
 const soundButton = document.getElementById("sound");
@@ -108,4 +123,11 @@ function calcRad(timeVal, maxTimeVal) {
 
 function randomNumber(max) {
   return Math.floor(Math.random() * max);
+}
+
+function vmin(percent) {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const min = Math.min(width, height);
+  return (min * percent) / 100;
 }

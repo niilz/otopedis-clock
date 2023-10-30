@@ -92,3 +92,10 @@ button {
   height: 1vmin;
   background-color: var(--black);
 }
+
+.sec-marker {
+  background: transparent;
+  position: absolute;
+  border: 2px solid red;
+  justify-self: center;
+}

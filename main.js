@@ -1,3 +1,5 @@
+import { vmin, randomNumber, calcRad } from "./util.js";
+
 // clock
 const clockEl = document.getElementById("clock");
 const clockFrame = document.getElementById("frame");
@@ -8,33 +10,6 @@ const minEl = document.getElementById("center-min");
 const minArm = document.getElementById("min");
 const secEl = document.getElementById("center-sec");
 const secArm = document.getElementById("sec");
-
-// canvas
-const canvas = document.getElementById("canvas");
-canvas.width = vmin(80);
-canvas.height = vmin(80);
-const ctx = canvas.getContext("2d");
-// draw second marks
-ctx.fillStyle = "black";
-const centerX = canvas.clientWidth / 2;
-const centerY = canvas.clientHeight / 2;
-const secMarkerWidth = vmin(1);
-const secMarkerHeight = vmin(5);
-
-const halfCanvas = vmin(40);
-ctx.translate(halfCanvas, halfCanvas);
-for (let sec = 1; sec < 61; sec++) {
-  ctx.rotate((2 * Math.PI) / 60);
-  ctx.fillRect(
-    -secMarkerWidth / 2,
-    -halfCanvas,
-    secMarkerWidth,
-    secMarkerHeight
-  );
-}
-ctx.restore();
-
-console.log({ canvas });
 
 // buttons
 let soundOn = false;
@@ -49,11 +24,38 @@ soundButton.addEventListener("click", () => {
   }
 });
 
+// canvas
+const canvas = document.getElementById("canvas");
+canvas.width = vmin(80);
+canvas.height = vmin(80);
+const ctx = canvas.getContext("2d");
+
+// draw second marks
+ctx.fillStyle = "black";
+const centerX = canvas.clientWidth / 2;
+const centerY = canvas.clientHeight / 2;
+const secMarkerWidth = vmin(1);
+const secMarkerHeight = vmin(5);
+const halfCanvas = vmin(40);
+
+ctx.translate(halfCanvas, halfCanvas);
+for (let sec = 1; sec < 61; sec++) {
+  ctx.rotate((2 * Math.PI) / 60);
+  ctx.fillRect(
+    -secMarkerWidth / 2,
+    -halfCanvas,
+    secMarkerWidth,
+    secMarkerHeight
+  );
+}
+ctx.restore();
+
 // audio
 const tick = new Audio("tick.m4a");
 const tock = new Audio("tock.m4a");
 const currentSec = 0;
 
+// clock-update
 let lastUpdate = 0;
 let lastSecond;
 let lastUpdateRate;
@@ -127,19 +129,3 @@ function clock() {
 }
 
 clock();
-
-function calcRad(timeVal, maxTimeVal) {
-  const deg = timeVal * (360 / maxTimeVal);
-  return deg.toString() + "deg";
-}
-
-function randomNumber(max) {
-  return Math.floor(Math.random() * max);
-}
-
-function vmin(percent) {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const min = Math.min(width, height);
-  return (min * percent) / 100;
-}

@@ -25,6 +25,37 @@ button {
   border: none;
 }
 
+header {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+h1 {
+  grid-column-start: 2;
+  text-align: center;
+}
+
+.details-wrapper {
+  grid-column-start: 3;
+}
+
+.details {
+  position: absolute;
+  font-size: 1.3rem;
+  width: 30vw;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1;
+  padding: 2vmin;
+  font-style: italic;
+  border-radius: 5px;
+}
+
+summary {
+  font-size: 2rem;
+  font-style: normal;
+}
+
 .clock-base {
   display: flex;
   align-items: center;

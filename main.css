@@ -17,18 +17,19 @@ main {
   height: auto;
 }
 
-button {
-  padding: 2vmin;
-  border-radius: calc(1vmin + 5px);
-  background-color: var(--blue);
-  color: white;
-  border: none;
-}
-
 header {
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+button {
+  border: none;
+}
+
+.language {
+  background-color: white;
+  font-size: 2rem;
 }
 
 h1 {
@@ -129,4 +130,11 @@ summary {
   background: transparent;
   position: absolute;
   justify-self: center;
+}
+
+.on-off {
+  padding: 2vmin;
+  border-radius: calc(1vmin + 5px);
+  background-color: var(--blue);
+  color: white;
 }

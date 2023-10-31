@@ -1,7 +1,12 @@
 import { vmin, randomNumber, calcRad } from "./util.js";
-import { quote, heading, onOff, footer } from "./i18n.js";
+import { flag, heading, quote, onOff, footer } from "./i18n.js";
 
 // text elements
+let langOptions = {
+  dutch: "english",
+  english: "dutch",
+};
+let language = "dutch";
 const docTitle = document.querySelector("title");
 const h1Heading = document.querySelector("h1");
 const footerH2 = document.querySelector("h2");
@@ -11,24 +16,43 @@ const hourEl = document.getElementById("center-hour");
 const minEl = document.getElementById("center-min");
 const secEl = document.getElementById("center-sec");
 const description = document.querySelector("#description");
-const language = "dutch";
-docTitle.textContent = heading[language];
-h1Heading.textContent = heading[language];
-description.innerHTML = quote[language];
-footerH2.textContent = footer[language];
 
 // buttons
+const langIcon = document.querySelector("#language");
+langIcon.textContent = "🇳🇱";
+langIcon.addEventListener("click", () => {
+  language = langOptions[language];
+  updateLanguages();
+  updateSoundButtonText();
+});
+
+updateLanguages();
+
 let soundOn = false;
 const soundButton = document.getElementById("sound");
-soundButton.textContent = `sound ${onOff[language].on}`;
+const soundButtonText = (option) => `sound ${onOff[language][option]}`;
+soundButton.textContent = soundButtonText("on");
+console.log(soundButton.textContent);
 soundButton.addEventListener("click", () => {
+  updateSoundButtonText();
+});
+
+function updateSoundButtonText() {
   soundOn = !soundOn;
   if (soundOn) {
-    soundButton.textContent = `sound ${onOff[language].off}`;
+    soundButton.textContent = soundButtonText("off");
   } else {
-    soundButton.textContent = `sound ${onOff[language].on}`;
+    soundButton.textContent = soundButtonText("on");
   }
-});
+}
+
+function updateLanguages() {
+  docTitle.textContent = heading[language];
+  h1Heading.textContent = heading[language];
+  description.innerHTML = quote[language];
+  footerH2.textContent = footer[language];
+  langIcon.textContent = flag[language];
+}
 
 // canvas
 const canvas = document.getElementById("canvas");

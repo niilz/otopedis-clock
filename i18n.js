@@ -14,6 +14,11 @@ export const quote = {
           Terry Pratchett, Posterijen`,
 };
 
+export const flag = {
+  english: "🇬🇧",
+  dutch: "🇳🇱",
+};
+
 export const heading = {
   english: `Vetinari's clock`,
   dutch: `Ottopedi's klok`,

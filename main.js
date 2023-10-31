@@ -19,7 +19,7 @@ const description = document.querySelector("#description");
 
 // buttons
 const langIcon = document.querySelector("#language");
-langIcon.textContent = "🇳🇱";
+langIcon.textContent = "🇬🇧";
 langIcon.addEventListener("click", () => {
   language = langOptions[language];
   updateLanguages();

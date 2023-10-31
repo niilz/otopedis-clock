@@ -15,8 +15,8 @@ export const quote = {
 };
 
 export const flag = {
-  english: "🇬🇧",
-  dutch: "🇳🇱",
+  english: "🇳🇱",
+  dutch: "🇬🇧",
 };
 
 export const heading = {

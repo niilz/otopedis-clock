@@ -19,8 +19,20 @@ ctx.fillStyle = "black";
 const centerX = canvas.clientWidth / 2;
 const centerY = canvas.clientHeight / 2;
 const secMarkerWidth = vmin(1);
-const secMarkerHeight = 30;
-ctx.fillRect(centerX - secMarkerWidth / 2, 0, secMarkerWidth, secMarkerHeight);
+const secMarkerHeight = vmin(5);
+
+const halfCanvas = vmin(40);
+ctx.translate(halfCanvas, halfCanvas);
+for (let sec = 1; sec < 61; sec++) {
+  ctx.rotate((2 * Math.PI) / 60);
+  ctx.fillRect(
+    -secMarkerWidth / 2,
+    -halfCanvas,
+    secMarkerWidth,
+    secMarkerHeight
+  );
+}
+ctx.restore();
 
 console.log({ canvas });
 

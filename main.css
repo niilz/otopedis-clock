@@ -5,6 +5,7 @@
 }
 
 body {
+  margin: 0;
   height: 100vmin;
   font-family: monospace;
   display: flex;

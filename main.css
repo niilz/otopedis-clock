@@ -78,7 +78,7 @@ button {
 .min-arm {
   width: 28vmin;
   height: 1.5vmin;
-  background-color: var(--orange);
+  background-color: var(--black);
 }
 
 .clock-center-sec {
@@ -90,12 +90,11 @@ button {
 .sec-arm {
   width: 36vmin;
   height: 1vmin;
-  background-color: var(--black);
+  background-color: var(--orange);
 }
 
 .sec-marker {
   background: transparent;
   position: absolute;
-  border: 2px solid red;
   justify-self: center;
 }

@@ -133,7 +133,7 @@ function clock() {
       const minDeg = calcRad(min, 60);
       const secDeg = calcRad(sec, 60);
 
-      const isRandomlySkipped = randomNumber(6) === 5;
+      const isRandomlySkipped = randomNumber(10) === 9;
       if (!isRandomlySkipped) {
         hourEl.style.rotate = hourDeg;
         //console.log({ hour, hourDeg });

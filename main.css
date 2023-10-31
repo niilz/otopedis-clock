@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  height: 100vmin;
+  height: 100vh;
   font-family: monospace;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ main {
 
 button {
   padding: 2vmin;
-  border-radius: 50%;
+  border-radius: calc(1vmin + 5px);
   background-color: var(--blue);
   color: white;
   border: none;
@@ -46,13 +46,13 @@ h1 {
   width: 30vw;
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 1;
-  padding: 2vmin;
+  padding: 1.5vmin;
   font-style: italic;
   border-radius: 5px;
 }
 
 summary {
-  font-size: 1.5rem;
+  font-size: 3.5vmin;
   font-style: normal;
 }
 

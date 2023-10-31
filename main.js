@@ -20,27 +20,40 @@ soundButton.addEventListener("click", () => {
 
 // canvas
 const canvas = document.getElementById("canvas");
-canvas.width = vmin(80);
-canvas.height = vmin(80);
+let canvasSize = vmin(80);
+canvas.width = canvasSize;
+canvas.height = canvasSize;
 const ctx = canvas.getContext("2d");
+window.addEventListener("resize", () => {
+  if (vmin(80) !== canvasSize) {
+    canvasSize = vmin(80);
+    console.log({ canvasSize });
+    canvas.height = canvasSize;
+    canvas.width = canvasSize;
+    drawSecondMarks();
+  }
+});
 
-// draw second marks
-ctx.fillStyle = "black";
-const secMarkerWidth = vmin(1);
-const secMarkerHeight = vmin(5);
-const halfCanvas = vmin(40);
+drawSecondMarks();
 
-ctx.translate(halfCanvas, halfCanvas);
-for (let sec = 1; sec < 61; sec++) {
-  ctx.rotate((2 * Math.PI) / 60);
-  ctx.fillRect(
-    -secMarkerWidth / 2,
-    -halfCanvas,
-    secMarkerWidth,
-    secMarkerHeight
-  );
+function drawSecondMarks() {
+  ctx.fillStyle = "black";
+  const secMarkerWidth = vmin(1);
+  const secMarkerHeight = vmin(5);
+  const halfCanvas = vmin(40);
+
+  ctx.translate(halfCanvas, halfCanvas);
+  for (let sec = 1; sec < 61; sec++) {
+    ctx.rotate((2 * Math.PI) / 60);
+    ctx.fillRect(
+      -secMarkerWidth / 2,
+      -halfCanvas,
+      secMarkerWidth,
+      secMarkerHeight
+    );
+  }
+  ctx.restore();
 }
-ctx.restore();
 
 // audio
 const tick = new Audio("tick.m4a");

@@ -1,15 +1,9 @@
 import { vmin, randomNumber, calcRad } from "./util.js";
 
 // clock
-const clockEl = document.getElementById("clock");
-const clockFrame = document.getElementById("frame");
-const clockBase = document.getElementById("base");
 const hourEl = document.getElementById("center-hour");
-const hourArm = document.getElementById("hour");
 const minEl = document.getElementById("center-min");
-const minArm = document.getElementById("min");
 const secEl = document.getElementById("center-sec");
-const secArm = document.getElementById("sec");
 
 // buttons
 let soundOn = false;
@@ -32,8 +26,6 @@ const ctx = canvas.getContext("2d");
 
 // draw second marks
 ctx.fillStyle = "black";
-const centerX = canvas.clientWidth / 2;
-const centerY = canvas.clientHeight / 2;
 const secMarkerWidth = vmin(1);
 const secMarkerHeight = vmin(5);
 const halfCanvas = vmin(40);
@@ -53,7 +45,6 @@ ctx.restore();
 // audio
 const tick = new Audio("tick.m4a");
 const tock = new Audio("tock.m4a");
-const currentSec = 0;
 
 // clock-update
 let lastUpdate = 0;

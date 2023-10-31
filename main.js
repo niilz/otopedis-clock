@@ -1,20 +1,32 @@
 import { vmin, randomNumber, calcRad } from "./util.js";
+import { quote, heading, onOff, footer } from "./i18n.js";
+
+// text elements
+const docTitle = document.querySelector("title");
+const h1Heading = document.querySelector("h1");
+const footerH2 = document.querySelector("h2");
 
 // clock
 const hourEl = document.getElementById("center-hour");
 const minEl = document.getElementById("center-min");
 const secEl = document.getElementById("center-sec");
+const description = document.querySelector("#description");
+const language = "dutch";
+docTitle.textContent = heading[language];
+h1Heading.textContent = heading[language];
+description.innerHTML = quote[language];
+footerH2.textContent = footer[language];
 
 // buttons
 let soundOn = false;
 const soundButton = document.getElementById("sound");
-soundButton.textContent = "sound ON";
+soundButton.textContent = `sound ${onOff[language].on}`;
 soundButton.addEventListener("click", () => {
   soundOn = !soundOn;
   if (soundOn) {
-    soundButton.textContent = "sound OFF";
+    soundButton.textContent = `sound ${onOff[language].off}`;
   } else {
-    soundButton.textContent = "sound ON";
+    soundButton.textContent = `sound ${onOff[language].on}`;
   }
 });
 
